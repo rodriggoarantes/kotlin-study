@@ -1,6 +1,6 @@
-package br.com.in6.kotlin.mvc.repository
+package br.com.in6.kotlin.domain.users.repository
 
-import br.com.in6.kotlin.poo.Usuario
+import br.com.in6.kotlin.domain.users.Usuario
 
 class UsuarioRepository {
 
@@ -17,7 +17,7 @@ class UsuarioRepository {
     }
 
     fun delete(id: Int) {
-        val index : Int = listaUsuarios.indexOfFirst { usuario -> usuario.id == id }
+        val index : Int? = listaUsuarios.indexOfFirst { usuario -> usuario.id == id }
         index?.let {
             listaUsuarios.removeAt(index)
         }

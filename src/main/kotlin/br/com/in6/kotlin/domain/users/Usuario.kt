@@ -1,4 +1,4 @@
-package br.com.in6.kotlin.poo
+package br.com.in6.kotlin.domain.users
 
 data class Usuario constructor(val id: Int, val name: String) {
     class Builder {

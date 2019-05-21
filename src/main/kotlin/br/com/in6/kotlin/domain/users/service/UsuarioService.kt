@@ -1,8 +1,10 @@
-package br.com.in6.kotlin.mvc.service
+package br.com.in6.kotlin.domain.users.service
 
-import br.com.in6.kotlin.mvc.repository.UsuarioRepository
-import br.com.in6.kotlin.poo.Usuario
+import br.com.in6.kotlin.domain.users.Usuario
+import br.com.in6.kotlin.domain.users.repository.UsuarioRepository
+import org.springframework.stereotype.Service
 
+@Service
 class UsuarioService {
 
     var identificador = 0
