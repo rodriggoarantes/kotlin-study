@@ -16,6 +16,7 @@
     <properties>
         <java.version>1.8</java.version>
         <kotlin.version>1.2.71</kotlin.version>
+        <start-class>br.com.in6.kotlin.KotlinApiApplicationKt</start-class>
     </properties>
 
     <dependencies>
@@ -64,7 +65,7 @@
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test</artifactId>
+            <artifactId>kotlin-test-junit</artifactId>
             <version>${kotlin.version}</version>
             <scope>test</scope>
         </dependency>
