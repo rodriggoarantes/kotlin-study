@@ -1,29 +1,22 @@
 package br.com.in6.kotlin.domain.users
 
+import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
 @Entity
-class Usuario constructor(@Id @GeneratedValue var id: Long? = null, var name: String) {
+data class Usuario constructor(
+        @Id
+        @GeneratedValue
+        val id: Long = 0,
 
-    class Builder {
-        private var id : Long = 0
-        private var name : String = ""
+        @Column(nullable = false)
+        val name: String)
 
-        fun id(id: Long) = apply { this.id = id }
-        fun name(name: String) = apply { this.name = name }
+data class UsuarioDto(val id: Long, val name: String)
 
-        fun build() = Usuario(
-                id,
-                name
-        )
-    }
-
-    companion object {
-        fun generate() : List<Usuario> {
-            return listOf(Usuario(1, "Generated"))
-        }
-    }
-}
-
+fun Usuario.toDTO() = UsuarioDto(
+        id = id,
+        name = name
+)
