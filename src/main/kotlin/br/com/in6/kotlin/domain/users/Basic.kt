@@ -9,13 +9,17 @@ import kotlin.collections.ArrayList
 
 /**
  * BOAS PRATICAS PARA KOTLIN
- */
-// https://github.com/phauer/blog-related/tree/master/kotlin-idiomatic
-class Basic() {
+ * https://github.com/phauer/blog-related/tree/master/kotlin-idiomatic
+ * */
+class Basic {
     private val LOG = LoggerFactory.getLogger(javaClass)
 
-    val listaUsuarios: MutableList<Usuario> = ArrayList(0)
+    private val listaUsuarios: MutableList<Usuario> = ArrayList(0)
 
+    fun putList(usr: Usuario) : List<Usuario> {
+        listaUsuarios.add(usr)
+        return listaUsuarios
+    }
     fun find(name: String, recursive: Boolean = true) : String {
         return " $name :: $recursive "
     }
@@ -32,15 +36,12 @@ class Basic() {
 
         val user = usuario()
 
-        var user2 = Usuario(id = 1, name="rodrigo")
-        var userDto = user2.toDTO()
+        var user1 = Usuario(id = 1, name="rodrigo")
+        var userDto = user1.toDTO()
 
         // find com sobreescrita
         find("rodrigo")
         find ("rodrigo", false)
-
-        // if-null
-        val userMaybeNull = user2?.id ?: throw IllegalArgumentException("Invalid User")
 
         // inline classes
         email(EmailAddress("rodriggoarantes@gmail.com"))
@@ -48,6 +49,13 @@ class Basic() {
         "teste de metodo add a String".countAmountOfX()
 
         print("Print date ${LocalDate.now()}")
+    }
+
+    fun tratarNonNull() : String {
+        // if-null
+        var testeNull = TestNull(value="rodrigo")
+        val userMaybeNull = testeNull?.value ?: throw IllegalArgumentException("Invalid Value")
+        return userMaybeNull
     }
 
     fun email(target: EmailAddress) : String {
@@ -162,4 +170,5 @@ class Basic() {
     }
 }
 
+inline class TestNull(val value: String?)
 inline class EmailAddress(val value: String)

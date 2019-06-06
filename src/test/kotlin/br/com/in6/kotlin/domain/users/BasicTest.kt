@@ -22,4 +22,18 @@ internal class BasicTest {
         assertThat(obj).isNotNull
         assertThat(obj).isEqualTo(Usuario(1, "Rodrigo"))
     }
+
+    @Test
+    fun `Teste Equals com AssertJ`() {
+        val u1 = Usuario(1, "A")
+
+        val list = basic.putList(u1)
+
+        val index1 = list.indexOf(u1)
+        val index2 = list.indexOf(Usuario(1, "A"))
+
+        assertThat(index1).isEqualTo(0)
+        assertThat(index2).isEqualTo(0)
+        assertThat(list).containsExactly(Usuario(1, "A"))
+    }
 }
