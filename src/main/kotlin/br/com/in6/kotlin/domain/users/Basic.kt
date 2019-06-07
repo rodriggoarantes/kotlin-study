@@ -24,10 +24,11 @@ class Basic {
         return " $name :: $recursive "
     }
 
-    fun usuario(id: Long = 1, name: String = "Rodrigo") : Usuario {
+    fun usuario(id: Long = 1, login: String = "Rodrigo", email: String = "mail@mail.com") : Usuario {
         return Usuario(
                 id = id,
-                name = name
+                login = login,
+                email = email
         )
     }
 
@@ -36,8 +37,9 @@ class Basic {
 
         val user = usuario()
 
-        var user1 = Usuario(id = 1, name="rodrigo")
+        var user1 = usuario()
         var userDto = user1.toDTO()
+        print(userDto)
 
         // find com sobreescrita
         find("rodrigo")
@@ -164,7 +166,7 @@ class Basic {
     fun sealedClasses() {
         // Usage
         val avatarUrl = when (val result = requestUserProfile("rodrigo")) {
-            is UserProfileResult.Success -> result.userProfile.name
+            is UserProfileResult.Success -> result.userProfile.login
             is UserProfileResult.Error -> "Desconhecido"
         }
     }

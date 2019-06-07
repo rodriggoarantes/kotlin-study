@@ -4,5 +4,5 @@ import br.com.in6.kotlin.domain.users.Usuario
 import org.springframework.data.repository.CrudRepository
 
 interface UsuarioRepository : CrudRepository<Usuario, Long> {
-    fun findByName(name: String): Usuario
+    fun findByLogin(name: String): Usuario
 }

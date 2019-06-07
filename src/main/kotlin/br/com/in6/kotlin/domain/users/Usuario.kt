@@ -1,22 +1,29 @@
 package br.com.in6.kotlin.domain.users
 
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
+@Table(name = "usuario")
+@Inheritance(strategy = InheritanceType.JOINED)
 data class Usuario constructor(
         @Id
         @GeneratedValue
         val id: Long = 0,
 
         @Column(nullable = false)
-        val name: String)
+        val login: String,
 
-data class UsuarioDto(val id: Long, val name: String)
+        @Column(nullable = false)
+        val email: String
+) {
+        @Transient
+        var password: String = ""
+        var foto : String = ""
+}
+
+data class UsuarioDto(val id: Long, val login: String)
 
 fun Usuario.toDTO() = UsuarioDto(
         id = id,
-        name = name
+        login = login
 )

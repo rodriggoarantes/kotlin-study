@@ -20,20 +20,22 @@ internal class BasicTest {
     fun `Obter usuario valor padrao`() {
         val obj = basic.usuario()
         assertThat(obj).isNotNull
-        assertThat(obj).isEqualTo(Usuario(1, "Rodrigo"))
+        assertThat(obj).isEqualTo(Usuario(1, "Rodrigo", obj.email))
     }
 
     @Test
     fun `Teste Equals com AssertJ`() {
-        val u1 = Usuario(1, "A")
+        val u1 = Usuario(1, "A", "r@r.com.br")
 
         val list = basic.putList(u1)
 
         val index1 = list.indexOf(u1)
-        val index2 = list.indexOf(Usuario(1, "A"))
+        val index2 = list.indexOf(Usuario(1, "A", "r@r.com.br"))
 
         assertThat(index1).isEqualTo(0)
         assertThat(index2).isEqualTo(0)
-        assertThat(list).containsExactly(Usuario(1, "A"))
+        assertThat(list)
+                .usingElementComparatorOnFields("id", "login")
+                    .containsExactly(Usuario(1, "A", ""))
     }
 }
