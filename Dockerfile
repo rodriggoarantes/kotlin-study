@@ -4,7 +4,7 @@ VOLUME /tmp
 MAINTAINER Rodrigo
 LABEL maintainer="rodriggoarantes@gmail.com"
 
-COPY target/kotlin-study-1.0-SNAPSHOT app.jar
+COPY target/kotlin-study-1.0.0-SNAPSHOT.jar app.jar
 
 ENTRYPOINT ["java","-jar","/app.jar"]
 
