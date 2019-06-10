@@ -17,7 +17,7 @@ data class Usuario constructor(
         val email: String
 ) {
         @Transient
-        var password: String = ""
+        var password: String? = ""
         var foto : String = ""
 }
 

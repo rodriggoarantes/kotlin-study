@@ -14,7 +14,8 @@ class UsuarioResource() {
 
     @GetMapping
     fun listar(): List<Usuario> {
-        return service.listar().toList()
+        val list : Iterable<Usuario> = service.listar()
+        return list.toList()
     }
 
     @GetMapping("/{id}")
