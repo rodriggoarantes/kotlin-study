@@ -2,18 +2,21 @@ version: '2'
 services:
 
   db:
-    image: postgres
+    image: postgres:10-alpine
     container_name: persona-postgres
     volumes:
       - db-data:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: "!admin010!"
+      - POSTGRES_USER: "postgres"
+      - POSTGRES_PASSWORD: "rodrigo010"
+      - POSTGRES_DB: "personas"
     ports:
       - "15432:5432"
 
   api:
     container_name: persona-api
     build: .
+    image: "rodriggoarantes/persona-api:1.0.0-SNAPSHOT"
     ports:
       - "8181:8181"
     depends_on:

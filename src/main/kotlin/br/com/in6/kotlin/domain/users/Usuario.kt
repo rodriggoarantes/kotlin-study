@@ -14,11 +14,12 @@ data class Usuario constructor(
         val login: String,
 
         @Column(nullable = false)
-        val email: String
+        val email: String,
+
+        var foto : String = ""
 ) {
         @Transient
         var password: String? = ""
-        var foto : String = ""
 }
 
 data class UsuarioDto(val id: Long, val login: String)
