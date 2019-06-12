@@ -7,4 +7,5 @@
     <include relativeToChangelogFile="true" file="liquibase-usuario.xml" />
     <include relativeToChangelogFile="true" file="liquibase-pessoa.xml" />
     <include relativeToChangelogFile="true" file="liquibase-email.xml" />
+    <include relativeToChangelogFile="true" file="liquibase-telefone.xml" />
 </databaseChangeLog>

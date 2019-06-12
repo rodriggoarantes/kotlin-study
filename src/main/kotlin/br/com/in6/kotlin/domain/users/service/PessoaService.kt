@@ -1,5 +1,6 @@
 package br.com.in6.kotlin.domain.users.service
 
+import br.com.in6.kotlin.domain.users.Email
 import br.com.in6.kotlin.domain.users.Pessoa
 import br.com.in6.kotlin.domain.users.repository.PessoaRepository
 import br.com.in6.kotlin.domain.users.repository.UsuarioRepository
@@ -21,6 +22,8 @@ class PessoaService @Autowired constructor(
         pessoa.usuario?.let {
             pessoa.usuario = usuarioRepository.findByIdOrNull(it.id)
         }
+        pessoa.emails?.forEach { it.pessoa = pessoa }
+        pessoa.telefones?.forEach { it.pessoa = pessoa }
         return checkNotNull( repository.save(pessoa) )
     }
 

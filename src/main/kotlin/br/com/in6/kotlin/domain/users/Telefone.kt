@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference
 import javax.persistence.*
 
 @Entity
-@Table(name = "email")
-data class Email (
+@Table(name = "telefone")
+data class Telefone (
         @Id
         @GeneratedValue
         val id: Long = 0,

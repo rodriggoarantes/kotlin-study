@@ -15,6 +15,12 @@ data class Pessoa (
         @JoinColumn(name = "usuario_id", referencedColumnName = "id", nullable = true)
         @JsonManagedReference
         var usuario: Usuario? = null
-        @OneToMany(mappedBy = "pessoa", cascade = [CascadeType.ALL])
+
+        @OneToMany(mappedBy = "pessoa", cascade = [CascadeType.ALL], orphanRemoval = true)
+        @JsonManagedReference
         var emails: MutableList<Email>? = mutableListOf()
+
+        @OneToMany(mappedBy = "pessoa", cascade = [CascadeType.ALL], orphanRemoval = true)
+        @JsonManagedReference
+        var telefones: MutableList<Telefone>? = mutableListOf()
 }
