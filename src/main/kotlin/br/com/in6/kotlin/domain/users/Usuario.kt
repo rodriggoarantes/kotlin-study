@@ -7,7 +7,6 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "usuario")
-@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator::class, property="id")
 data class Usuario constructor(
         @Id
         @GeneratedValue
