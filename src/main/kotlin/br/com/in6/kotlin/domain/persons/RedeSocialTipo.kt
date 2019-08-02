@@ -1,4 +1,4 @@
-package br.com.in6.kotlin.domain.users
+package br.com.in6.kotlin.domain.persons
 
 import com.fasterxml.jackson.annotation.JsonBackReference
 import javax.persistence.*

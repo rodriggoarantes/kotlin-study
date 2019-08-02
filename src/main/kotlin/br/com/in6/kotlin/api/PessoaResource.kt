@@ -1,7 +1,7 @@
 package br.com.in6.kotlin.api
 
-import br.com.in6.kotlin.domain.users.Pessoa
-import br.com.in6.kotlin.domain.users.service.PessoaService
+import br.com.in6.kotlin.domain.persons.Pessoa
+import br.com.in6.kotlin.domain.persons.service.PessoaService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 

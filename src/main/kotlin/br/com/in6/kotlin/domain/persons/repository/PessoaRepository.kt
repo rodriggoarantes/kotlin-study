@@ -1,7 +1,6 @@
-package br.com.in6.kotlin.domain.users.repository
+package br.com.in6.kotlin.domain.persons.repository
 
-import br.com.in6.kotlin.domain.users.Pessoa
-import br.com.in6.kotlin.domain.users.Usuario
+import br.com.in6.kotlin.domain.persons.Pessoa
 import org.springframework.data.repository.CrudRepository
 
 interface PessoaRepository : CrudRepository<Pessoa, Long> {

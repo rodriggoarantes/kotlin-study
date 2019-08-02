@@ -1,5 +1,7 @@
 package br.com.in6.kotlin.domain.users
 
+import br.com.in6.kotlin.Basic
+import br.com.in6.kotlin.EmailAddress
 import org.assertj.core.api.Assertions.*
 import org.junit.Test
 import org.junit.jupiter.api.Assertions.assertEquals

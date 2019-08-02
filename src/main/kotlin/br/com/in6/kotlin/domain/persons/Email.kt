@@ -1,15 +1,14 @@
-package br.com.in6.kotlin.domain.users
+package br.com.in6.kotlin.domain.persons
 
 import com.fasterxml.jackson.annotation.JsonBackReference
 import javax.persistence.*
 
 @Entity
-@Table(name = "redesocial")
-data class RedeSocial (
+@Table(name = "email")
+data class Email (
         @Id
         @GeneratedValue
         val id: Long = 0,
-        val tipo: RedeSocialTipo,
         val valor: String
 ) {
     @ManyToOne(optional = false)

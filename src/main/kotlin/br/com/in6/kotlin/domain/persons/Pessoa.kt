@@ -1,5 +1,6 @@
-package br.com.in6.kotlin.domain.users
+package br.com.in6.kotlin.domain.persons
 
+import br.com.in6.kotlin.domain.users.Usuario
 import com.fasterxml.jackson.annotation.JsonManagedReference
 import javax.persistence.*
 

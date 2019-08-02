@@ -1,8 +1,7 @@
-package br.com.in6.kotlin.domain.users.service
+package br.com.in6.kotlin.domain.persons.service
 
-import br.com.in6.kotlin.domain.users.Email
-import br.com.in6.kotlin.domain.users.Pessoa
-import br.com.in6.kotlin.domain.users.repository.PessoaRepository
+import br.com.in6.kotlin.domain.persons.Pessoa
+import br.com.in6.kotlin.domain.persons.repository.PessoaRepository
 import br.com.in6.kotlin.domain.users.repository.UsuarioRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.findByIdOrNull
