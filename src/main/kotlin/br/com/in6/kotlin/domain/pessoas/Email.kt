@@ -1,11 +1,11 @@
-package br.com.in6.kotlin.domain.persons
+package br.com.in6.kotlin.domain.pessoas
 
 import com.fasterxml.jackson.annotation.JsonBackReference
 import javax.persistence.*
 
 @Entity
-@Table(name = "telefone")
-data class Telefone (
+@Table(name = "email")
+data class Email (
         @Id
         @GeneratedValue
         val id: Long = 0,

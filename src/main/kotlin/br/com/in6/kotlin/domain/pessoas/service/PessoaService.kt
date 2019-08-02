@@ -1,8 +1,8 @@
-package br.com.in6.kotlin.domain.persons.service
+package br.com.in6.kotlin.domain.pessoas.service
 
-import br.com.in6.kotlin.domain.persons.Pessoa
-import br.com.in6.kotlin.domain.persons.repository.PessoaRepository
-import br.com.in6.kotlin.domain.users.repository.UsuarioRepository
+import br.com.in6.kotlin.domain.pessoas.Pessoa
+import br.com.in6.kotlin.domain.pessoas.repository.PessoaRepository
+import br.com.in6.kotlin.domain.usuarios.repository.UsuarioRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service

@@ -1,8 +1,8 @@
 package br.com.in6.kotlin
 
-import br.com.in6.kotlin.domain.users.Usuario
-import br.com.in6.kotlin.domain.users.UsuarioDto
-import br.com.in6.kotlin.domain.users.toDTO
+import br.com.in6.kotlin.domain.usuarios.Usuario
+import br.com.in6.kotlin.domain.usuarios.UsuarioDto
+import br.com.in6.kotlin.domain.usuarios.toDTO
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import org.slf4j.LoggerFactory
