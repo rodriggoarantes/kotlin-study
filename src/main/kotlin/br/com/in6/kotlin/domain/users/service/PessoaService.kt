@@ -24,6 +24,8 @@ class PessoaService @Autowired constructor(
         }
         pessoa.emails?.forEach { it.pessoa = pessoa }
         pessoa.telefones?.forEach { it.pessoa = pessoa }
+        pessoa.redeSociais?.forEach { it.pessoa = pessoa }
+
         return checkNotNull( repository.save(pessoa) )
     }
 

@@ -23,4 +23,8 @@ data class Pessoa (
         @OneToMany(mappedBy = "pessoa", cascade = [CascadeType.ALL], orphanRemoval = true)
         @JsonManagedReference
         var telefones: MutableList<Telefone>? = mutableListOf()
+
+        @OneToMany(mappedBy = "pessoa", cascade = [CascadeType.ALL], orphanRemoval = true)
+        @JsonManagedReference
+        var redeSociais: MutableList<RedeSocial>? = mutableListOf()
 }
