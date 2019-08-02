@@ -23,6 +23,7 @@ services:
     image: "rodriggoarantes/persona-api:1.0.0-SNAPSHOT"
     ports:
       - "8181:8181"
+      - "15005:5005"
     depends_on:
       - db
     networks:
