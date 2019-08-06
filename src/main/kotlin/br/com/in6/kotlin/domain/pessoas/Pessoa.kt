@@ -1,5 +1,6 @@
 package br.com.in6.kotlin.domain.pessoas
 
+import br.com.in6.kotlin.domain.enderecos.Endereco
 import br.com.in6.kotlin.domain.usuarios.Usuario
 import com.fasterxml.jackson.annotation.JsonManagedReference
 import javax.persistence.*
@@ -28,4 +29,12 @@ data class Pessoa (
         @OneToMany(mappedBy = "pessoa", cascade = [CascadeType.ALL], orphanRemoval = true)
         @JsonManagedReference
         var redeSociais: MutableList<RedeSocial>? = mutableListOf()
+
+        @ManyToMany(cascade = [CascadeType.ALL])
+        @JoinTable(
+                name = "pessoa_endereco",
+                joinColumns = [JoinColumn(name = "pessoa_id", referencedColumnName = "id")],
+                inverseJoinColumns = [JoinColumn(name = "endereco_id", referencedColumnName = "id")] )
+        @JsonManagedReference
+        var enderecos: MutableList<Endereco>? = mutableListOf()
 }
