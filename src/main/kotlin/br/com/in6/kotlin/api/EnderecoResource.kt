@@ -2,6 +2,7 @@ package br.com.in6.kotlin.api
 
 import br.com.in6.kotlin.domain.enderecos.Endereco
 import br.com.in6.kotlin.domain.enderecos.repository.EnderecoRepository
+import br.com.in6.kotlin.domain.enderecos.service.EnderecoService
 import br.com.in6.kotlin.domain.usuarios.Usuario
 import br.com.in6.kotlin.domain.usuarios.service.UsuarioService
 import org.springframework.beans.factory.annotation.Autowired
@@ -13,33 +14,31 @@ import org.springframework.web.bind.annotation.*
 class EnderecoResource() {
 
     @Autowired
-    lateinit var repository: EnderecoRepository
+    lateinit var repository: EnderecoService
 
     @GetMapping
     fun listar(): List<Endereco> {
-        val list : Iterable<Endereco> = repository.findAll()
+        val list : Iterable<Endereco> = repository.listar()
         return list.toList()
     }
 
     @GetMapping("/{id}")
     fun obter(@PathVariable id : Long): Endereco? {
-        return repository.findByIdOrNull(id)
+        return repository.obter(id)
     }
 
     @DeleteMapping("/{id}")
     fun deletar(@PathVariable id : Long) {
-        repository.deleteById(id)
+        repository.deletar(id)
     }
 
     @PostMapping
     fun gravar(@RequestBody endereco: Endereco): Endereco {
-        return repository.save(endereco)
+        return repository.inserir(endereco)
     }
 
     @PatchMapping
     fun atualizar(@RequestBody end: Endereco): Endereco? {
-        repository.findByIdOrNull(end.id) ?: throw IllegalArgumentException("Endereço nao encontrado para atualização")
-        return repository.save(end)
+        return repository.atualizar(end)
     }
-
 }

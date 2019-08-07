@@ -1,8 +1,5 @@
 package br.com.in6.kotlin.domain.enderecos
 
-import br.com.in6.kotlin.domain.pessoas.Pessoa
-import com.fasterxml.jackson.annotation.JsonBackReference
-import com.fasterxml.jackson.annotation.JsonManagedReference
 import javax.persistence.*
 
 @Entity
@@ -12,7 +9,7 @@ data class Endereco (
         @GeneratedValue
         val id: Long = 0,
         val descricao: String,
-        val cep: String,
+        val cep: Long,
         val logradouro: String,
         val numero: Long,
         val complemento: String,
@@ -21,6 +18,5 @@ data class Endereco (
 ) {
     @OneToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "cidade_id", referencedColumnName = "id", nullable = false)
-    @JsonManagedReference
     var cidade: Cidade? = null
 }

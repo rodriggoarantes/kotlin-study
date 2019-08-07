@@ -1,6 +1,5 @@
 package br.com.in6.kotlin.domain.enderecos
 
-import com.fasterxml.jackson.annotation.JsonManagedReference
 import javax.persistence.*
 
 @Entity
@@ -13,6 +12,5 @@ data class Cidade (
 ) {
         @OneToOne(cascade = [CascadeType.ALL])
         @JoinColumn(name = "estado_id", referencedColumnName = "id", nullable = false)
-        @JsonManagedReference
         var estado: Estado? = null
 }

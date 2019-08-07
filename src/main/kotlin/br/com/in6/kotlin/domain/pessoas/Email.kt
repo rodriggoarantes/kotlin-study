@@ -13,6 +13,5 @@ data class Email (
 ) {
     @ManyToOne(optional = false)
     @JoinColumn(name = "pessoa_id", nullable = false)
-    @JsonBackReference
     var pessoa: Pessoa? = null
 }
