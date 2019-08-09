@@ -8,7 +8,7 @@ data class Cidade (
         @Id
         @GeneratedValue
         val id: Long = 0,
-        val nome: String
+        val nome: String = ""
 ) {
         @OneToOne(cascade = [CascadeType.ALL])
         @JoinColumn(name = "estado_id", referencedColumnName = "id", nullable = false)

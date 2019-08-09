@@ -33,7 +33,7 @@ class EnderecoResource() {
         return service.inserir(endereco)
     }
 
-    @PatchMapping
+    @PutMapping
     fun atualizar(@RequestBody end: Endereco): Endereco? {
         return service.atualizar(end)
     }

@@ -54,7 +54,7 @@ class EnderecoService @Autowired constructor(
         endereco.descricao = obj.descricao
         endereco.tipo = obj.tipo
 
-        return enderecoRepository.save(obj)
+        return enderecoRepository.save(endereco)
     }
 
     fun listarEnderecoPorCep(cep: Long) : Iterable<Endereco> {
