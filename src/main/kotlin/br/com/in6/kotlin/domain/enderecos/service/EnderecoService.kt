@@ -1,8 +1,6 @@
 package br.com.in6.kotlin.domain.enderecos.service
 
 import br.com.in6.kotlin.domain.enderecos.Endereco
-import br.com.in6.kotlin.domain.enderecos.Estado
-import br.com.in6.kotlin.domain.enderecos.Pais
 import br.com.in6.kotlin.domain.enderecos.repository.CidadeRepository
 import br.com.in6.kotlin.domain.enderecos.repository.EnderecoRepository
 import br.com.in6.kotlin.domain.enderecos.repository.EstadoRepository
@@ -36,19 +34,30 @@ class EnderecoService @Autowired constructor(
     }
 
     fun atualizar(obj: Endereco) : Endereco? {
-        this.obter(obj.id!!) ?: throw IllegalArgumentException("Endereco nao encontrado para atualização")
+        val endereco = this.obter(obj.id!!) ?: throw IllegalArgumentException("Endereco nao encontrado para atualização")
+
+        if ( obj.cidade!!.id > 0 ) {
+            endereco.cidade = cidadeRepository.findByIdOrNull(obj.cidade!!.id)
+        } else if ( obj.cidade!!.estado!!.id > 0) {
+            endereco.cidade!!.estado = estadoRepository.findByIdOrNull(obj.cidade!!.estado!!.id)
+        } else if ( obj.cidade!!.estado!!.pais!!.id > 0) {
+            endereco.cidade!!.estado!!.pais = paisRepository.findByIdOrNull(obj.cidade!!.estado!!.pais!!.id)
+        } else {
+            throw IllegalArgumentException("Endereco nao informado de forma completa")
+        }
+
+        endereco.logradouro = obj.logradouro
+        endereco.numero = obj.numero
+        endereco.bairro = obj.bairro
+        endereco.cep = obj.cep
+        endereco.complemento = obj.complemento
+        endereco.descricao = obj.descricao
+        endereco.tipo = obj.tipo
+
         return enderecoRepository.save(obj)
     }
 
-    fun listarPaises() : Iterable<Pais> {
-        return paisRepository.findAll()
-    }
-
-    fun listarEstados() : Iterable<Estado> {
-        return estadoRepository.findAll()
-    }
-
-    fun listarEstadosPorPais(param: Pais) : Iterable<Estado> {
-        return estadoRepository.findByPais(param)
+    fun listarEnderecoPorCep(cep: Long) : Iterable<Endereco> {
+        return enderecoRepository.findByCep(cep)
     }
 }
