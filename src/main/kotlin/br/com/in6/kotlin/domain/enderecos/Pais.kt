@@ -8,7 +8,7 @@ data class Pais (
         @Id
         @GeneratedValue
         val id: Long = 0,
-        val codigo: String,
+        val codigo: String = "000",
         val nome: String,
-        val sigla: String
+        val sigla: String = ""
 )
