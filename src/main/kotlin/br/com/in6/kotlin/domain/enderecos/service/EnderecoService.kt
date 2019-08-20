@@ -22,6 +22,7 @@ class EnderecoService @Autowired constructor(
     }
 
     fun inserir(endereco: Endereco) : Endereco {
+        this.normalizarEndereco(endereco, endereco)
         return checkNotNull( enderecoRepository.save(endereco) )
     }
 
@@ -33,18 +34,9 @@ class EnderecoService @Autowired constructor(
         return enderecoRepository.findAll().toMutableList()
     }
 
-    fun atualizar(obj: Endereco) : Endereco? {
+    fun atualizar(obj: Endereco) : Endereco {
         val endereco = this.obter(obj.id!!) ?: throw IllegalArgumentException("Endereco nao encontrado para atualização")
-
-        if ( obj.cidade!!.id > 0 ) {
-            endereco.cidade = cidadeRepository.findByIdOrNull(obj.cidade!!.id)
-        } else if ( obj.cidade!!.estado!!.id > 0) {
-            endereco.cidade!!.estado = estadoRepository.findByIdOrNull(obj.cidade!!.estado!!.id)
-        } else if ( obj.cidade!!.estado!!.pais!!.id > 0) {
-            endereco.cidade!!.estado!!.pais = paisRepository.findByIdOrNull(obj.cidade!!.estado!!.pais!!.id)
-        } else {
-            throw IllegalArgumentException("Endereco nao informado de forma completa")
-        }
+        this.normalizarEndereco(obj, endereco)
 
         endereco.logradouro = obj.logradouro
         endereco.numero = obj.numero
@@ -59,5 +51,17 @@ class EnderecoService @Autowired constructor(
 
     fun listarEnderecoPorCep(cep: Long) : Iterable<Endereco> {
         return enderecoRepository.findByCep(cep)
+    }
+
+    fun normalizarEndereco(obj: Endereco, endPreencher: Endereco) {
+        if ( obj.cidade!!.id > 0 ) {
+            endPreencher.cidade = cidadeRepository.findByIdOrNull(obj.cidade!!.id)
+        } else if ( obj.cidade!!.estado!!.id > 0) {
+            endPreencher.cidade!!.estado = estadoRepository.findByIdOrNull(obj.cidade!!.estado!!.id)
+        } else if ( obj.cidade!!.estado!!.pais!!.id > 0) {
+            endPreencher.cidade!!.estado!!.pais = paisRepository.findByIdOrNull(obj.cidade!!.estado!!.pais!!.id)
+        } else {
+            throw IllegalArgumentException("Endereco nao informado de forma completa")
+        }
     }
 }
