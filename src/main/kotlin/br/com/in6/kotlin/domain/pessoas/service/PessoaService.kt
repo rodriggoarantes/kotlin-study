@@ -30,7 +30,7 @@ class PessoaService @Autowired constructor(
         pessoa.telefones?.forEach { it.pessoa = pessoa }
         pessoa.redeSociais?.forEach { it.pessoa = pessoa }
 
-        val enderecos : MutableList<Endereco> = mutableListOf()
+        val enderecos : MutableSet<Endereco> = mutableSetOf()
         pessoa.enderecos?.let {
             it.forEach { end ->
                 val founded: Endereco

@@ -35,5 +35,5 @@ data class Pessoa (
                 name = "pessoa_endereco",
                 joinColumns = [JoinColumn(name = "pessoa_id", referencedColumnName = "id")],
                 inverseJoinColumns = [JoinColumn(name = "endereco_id", referencedColumnName = "id")] )
-        var enderecos: MutableList<Endereco>? = mutableListOf()
+        var enderecos: MutableSet<Endereco>? = mutableSetOf()
 }
