@@ -61,6 +61,7 @@ class EnderecoService @Autowired constructor(
         } else if ( obj.cidade!!.estado!!.pais!!.id > 0) {
             endPreencher.cidade!!.estado!!.pais = paisRepository.findByIdOrNull(obj.cidade!!.estado!!.pais!!.id)
         } else {
+
             throw IllegalArgumentException("Endereco nao informado de forma completa")
         }
     }
